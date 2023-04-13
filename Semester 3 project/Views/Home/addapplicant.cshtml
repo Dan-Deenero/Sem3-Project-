@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "addapplicant";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <h2 class="text-success">Admin page</h2>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="addaplicant.html">
+                            <span data-feather="file"></span>
+                            Set exam date
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="applic_list.html">
+                            <span data-feather="shopping-cart"></span>
+                            view applicant Info
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="editQuest.html">
+                            <span data-feather="users"></span>
+                            Edit Question
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="main mx-auto">
+                    @using (Html.BeginForm("addapplicant", "Home", FormMethod.Post, new { enctype =  "multipart/form-data"}))
+                    {
+                        <h2>Applicant Info</h2>
+                        <div class='group'>
+                            @Html.TextBox("Fullname", "", new { @class = "form-input" })
+                            @Html.Label("Fullname", new { @class = "form-input-label" })
+                        </div>
+                        <div class='group'>
+                            @Html.TextBox("Email", "", new { @class = "form-input" })
+                            @Html.Label("Email", new { @class = "form-input-label" })
+                        </div>
+                        <div class='group'>
+                            @Html.TextBox("PhoneNo", "", new { @class = "form-input" })
+                            @Html.Label("PhoneNo", new { @class = "form-input-label" })
+                        </div>
+                        <div class='group'>
+                            @Html.TextBox("CV", "", new { @class = "form-input" })
+                            @Html.Label("CV", new { @class = "form-input-label" })
+                        </div>
+                        <div class='group'>
+                            @Html.TextBox("Password", "", new { @class = "form-input" })
+                            @Html.Label("Password", new { @class = "form-input-label" })
+                        </div>
+                        <div class='group'>
+                            @Html.TextBox("Username", "", new { @class = "form-input" })
+                            @Html.Label("Username", new { @class = "form-input-label" })
+                        </div>
+                        <button class="btn btn-success btns">Submit</button>
+                    }
+                </div>
+            </main>
+    </div>
+</div>
+
