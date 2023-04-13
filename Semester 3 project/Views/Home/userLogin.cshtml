@@ -10,22 +10,23 @@
             <p class="col-lg-10 fs-4">Here as an Applicant you take your exam and view result Login with the user name and password given by the administrator </p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-            <form class="p-4 p-md-5 border rounded-3 bg-light">
+            @using (Html.BeginForm("userLogin", "Home", FormMethod.Post, new { @class = "p-4 p-md-5 border rounded-3 bg-light" }))
+            {
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Username</label>
+                    @Html.TextBox("Username", "", new { @class = "form-control", placeholder = "name@example.com" })
+                    @Html.Label("Username", new { @class = "form-input-label" })
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                    @Html.Password("Password", "", new { @class = "form-control", placeholder = "Password" })
+                    @Html.Label("Password", new { @class = "form-input-label" })
                 </div>
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
-                <button class="w-100 btn btn-lg text-white btn-success" type="submit">Sign up</button>
-            </form>
+                <button class="w-100 btn btn-lg btn-success text-white" type="submit">Login</button>
+            }
         </div>
     </div>
 </div>

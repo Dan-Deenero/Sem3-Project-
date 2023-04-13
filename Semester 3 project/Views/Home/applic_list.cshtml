@@ -5,3 +5,72 @@
 
 <h2>applic_list</h2>
 
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <h2 class="text-success">Admin page</h2>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("addapplicant", "Home")" class="nav-link">
+                            <span data-feather="activity"></span>
+                            Set exam date
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("applic_list", "Home")" class="nav-link">
+                            <span data-feather="users"></span>
+                            view applicant Info
+                        </a>
+                    </li>
+                  
+                    <li class="nav-item">
+                        <a href="@Url.Action("editQuest", "Home")" class="nav-link">
+                            <span data-feather="shopping-cart"></span>
+                            Edit Question
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h2>Section title</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fullname</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">phoneNO</th>
+                            <th scope="col">CV</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                    <tbody>
+                        <tr>
+                            <td>@item.Fullname</td>
+                            <td>@item.Email</td>
+                            <td>@item.PhoneNo</td>
+                            <td>@item.CV</td>
+                            <td>@item.Password</td>
+                            <td>@item.Username</td>
+                            <td>@item.Score</td>
+                        </tr>
+       
+
+                    </tbody>
+                    }
+                </table>
+            </div>
+        </main>
+    </div>
+</div>

@@ -14,6 +14,7 @@ namespace Semester_3_project.Controllers
 
         OrendeeDBEntities JobEnt = new OrendeeDBEntities();
         Applicant newApp = new Applicant();
+        Admin newAdmin = new Admin();
         public ActionResult Index()
         {
             return View();
@@ -33,17 +34,57 @@ namespace Semester_3_project.Controllers
             return View();
         }
 
-        public ActionResult adminLogin()
+        
+        public ActionResult adminLogin(Admin data)
         {
-            ViewBag.Message = "Admin login page";
-
-            return View();
+            if (data != null && !string.IsNullOrEmpty(data.ad_name) && !string.IsNullOrEmpty(data.ad_pass))
+            {
+                var admin = JobEnt.Admins.FirstOrDefault(a => a.ad_name == data.ad_name && a.ad_pass == data.ad_pass);
+                if (admin != null)
+                {
+                    // Login successful, redirect to admin panel
+                    return RedirectToAction("addapplicant");
+                }
+                else
+                {
+                    // Login failed, display error message
+                    ViewBag.ErrorMessage = "Invalid username or password";
+                    return View();
+                }
+            }
+            else
+            {
+                // Form data missing, display error message
+                ViewBag.ErrorMessage = "Form cannot be empty";
+                return View();
+            }
         }
-        public ActionResult userLogin()
-        {
-            ViewBag.Message = "user login page";
 
-            return View();
+
+        [HttpPost]
+        public ActionResult userLogin(Applicant data)
+        {
+            if (data != null && !string.IsNullOrEmpty(data.Username) && !string.IsNullOrEmpty(data.Password))
+            {
+                var appl = JobEnt.Applicants.FirstOrDefault(a => a.Username == data.Username && a.Password == data.Password);
+                if (appl != null)
+                {
+                    // Login successful, redirect to admin panel
+                    return RedirectToAction("applicantPage");
+                }
+                else
+                {
+                    // Login failed, display error message
+                    ViewBag.ErrorMessage = "Invalid username or password";
+                    return View();
+                }
+            }
+            else
+            {
+                // Form data missing, display error message
+                ViewBag.ErrorMessage = "Form cannot be empty";
+                return View();
+            }
         }
 
         [HttpPost]
@@ -59,7 +100,9 @@ namespace Semester_3_project.Controllers
                 newApp.Username = data.Username;
 
                 JobEnt.Applicants.Add(newApp);
-                return View();
+
+
+                return RedirectToAction("addapplicant");
             }
             else
             {
@@ -70,9 +113,10 @@ namespace Semester_3_project.Controllers
 
         public ActionResult applic_list()
         {
-            ViewBag.Message = "applicant list page.";
+            var db = JobEnt.Applicants.ToList();
+            ViewBag.Message = "Blog page";
 
-            return View();
+            return View(db);
         }
 
         public ActionResult editQuest()

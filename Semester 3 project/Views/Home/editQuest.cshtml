@@ -3,5 +3,84 @@
     ViewBag.Title = "editQuest";
 }
 
-<h2>editQuest</h2>
+
+<div class="container-fluid">
+    `
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <h2 class="text-success">Admin page</h2>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("addapplicant", "Home")" class="nav-link">
+                            <span data-feather="activity"></span>
+                            Set exam date
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("applic_list", "Home")" class="nav-link">
+                            <span data-feather="users"></span>
+                            view applicant Info
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("editQuest", "Home")" class="nav-link">
+                            <span data-feather="shopping-cart"></span>
+                            Edit Question
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="main mx-auto">
+                <form>
+                    <h2>Add Question</h2>
+
+                    <div class='group'>
+                        <input class='form-input' />
+                        <label class="form-input-label">category</label>
+                    </div>
+                    <div class='group'>
+                        <input class='form-input' />
+                        <label class="form-input-label">Question</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class='group'>
+                                <input class='form-input' />
+                                <label class="form-input-label">option 1</label>
+                            </div>
+                            <div class='group'>
+                                <input class='form-input' />
+                                <label class="form-input-label">option 2</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class='group'>
+                                <input type="text" class="form-input">
+                                <label class="form-input-label">option 3</label>
+                            </div>
+                            <div class='group'>
+                                <input class='form-input' />
+                                <label class="form-input-label">option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='group'>
+                        <input class='form-input' />
+                        <label class="form-input-label">correct answer</label>
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>
 
